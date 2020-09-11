@@ -1,0 +1,12 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'spec/*.rb'
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Style/Documentation:
+  Enabled: false
+Layout/ArgumentAlignment:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
