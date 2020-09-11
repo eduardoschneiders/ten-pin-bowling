@@ -1,0 +1,28 @@
+class Frame
+  attr_accessor :first_score, :second_score
+
+  def initialize(first_score, second_score)
+    @first_score = first_score
+    @second_score = second_score
+
+    raise "score out of range: #{partial_score}" if out_of_range?
+  end
+
+  def strike?
+    first_score == 10
+  end
+
+  def spare?
+    partial_score == 10
+  end
+
+  private
+
+  def partial_score
+    first_score + second_score
+  end
+
+  def out_of_range?
+    (partial_score < 0) || (partial_score > 10)
+  end
+end
