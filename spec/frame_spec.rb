@@ -2,8 +2,24 @@ require File.expand_path('../frame', __dir__)
 
 describe Frame do
   describe '#initialize' do
+    context 'when the score are inside range' do
+      subject { Frame.new(1, 2) }
+
+      it 'should calculate the partial score' do
+        expect(subject.partial_score).to eql(3)
+      end
+    end
+
+    context 'when the third score is needed' do
+      subject { Frame.new(1, 2, 3) }
+
+      it 'should raise error' do
+        expect(subject.partial_score).to eql(6)
+      end
+    end
+
     context 'when sum of score is above 10' do
-      subject { Frame.new(9, 9) }
+      subject { Frame.new(9, 9).validate! }
 
       it 'should raise error' do
         expect { subject }.to raise_error('score out of range: 18')
@@ -11,7 +27,7 @@ describe Frame do
     end
 
     context 'when sum of score is below 0' do
-      subject { Frame.new(-1, 0) }
+      subject { Frame.new(-1, 0).validate! }
 
       it 'should raise error' do
         expect { subject }.to raise_error('score out of range: -1')
@@ -29,7 +45,7 @@ describe Frame do
     end
 
     context 'when first score is 10' do
-      subject { Frame.new(10, 0).strike? }
+      subject { Frame.new(10).strike? }
 
       it 'should be a strike' do
         expect(subject).to eql(true)

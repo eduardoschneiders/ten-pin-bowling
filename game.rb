@@ -20,11 +20,13 @@ class Game
   end
 
   def extra_points(frame:, previous_frame:, second_previous_frame:)
+    return if frame.last_frame?
+
     if frame.strike?
       if previous_frame.strike?
         previous_frame.first_score + second_previous_frame.first_score
       else
-        previous_frame.partial_score
+        previous_frame.first_score + previous_frame.second_score
       end
     elsif frame.spare?
       previous_frame.first_score
