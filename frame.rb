@@ -25,6 +25,6 @@ class Frame
   private
 
   def out_of_range?
-    (partial_score < 0) || (partial_score > 10)
+    partial_score.negative? || partial_score > 10
   end
 end

@@ -6,18 +6,28 @@ class Game
   end
 
   def calculate_score
-    total = 0
+    frames.reverse!
 
-    frames.reverse.each_with_index do |frame, i|
-      if frame.strike?
-        total += frames.reverse[i-1].first_score + frames.reverse[i-1].second_score
-      elsif frame.spare?
-        total += frames.reverse[i-1].first_score
-      end
+    frames.each_with_index.inject(0) do |total, (frame, i)|
+      total += extra_points(
+        frame: frame,
+        previous_frame: frames[i - 1],
+        second_previous_frame: frames[i - 2]
+      ).to_i
 
-      total += frame.partial_score
+      total + frame.partial_score
     end
+  end
 
-    total
+  def extra_points(frame:, previous_frame:, second_previous_frame:)
+    if frame.strike?
+      if previous_frame.strike?
+        previous_frame.first_score + second_previous_frame.first_score
+      else
+        previous_frame.partial_score
+      end
+    elsif frame.spare?
+      previous_frame.first_score
+    end
   end
 end

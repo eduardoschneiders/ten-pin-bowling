@@ -6,7 +6,7 @@ describe Frame do
       subject { Frame.new(9, 9) }
 
       it 'should raise error' do
-        expect{ subject }.to raise_error('score out of range: 18')
+        expect { subject }.to raise_error('score out of range: 18')
       end
     end
 
@@ -14,7 +14,7 @@ describe Frame do
       subject { Frame.new(-1, 0) }
 
       it 'should raise error' do
-        expect{ subject }.to raise_error('score out of range: -1')
+        expect { subject }.to raise_error('score out of range: -1')
       end
     end
   end
