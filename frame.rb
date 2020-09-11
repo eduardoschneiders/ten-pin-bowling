@@ -16,11 +16,13 @@ class Frame
     partial_score == 10
   end
 
-  private
-
   def partial_score
+    return first_score if strike?
+
     first_score + second_score
   end
+
+  private
 
   def out_of_range?
     (partial_score < 0) || (partial_score > 10)

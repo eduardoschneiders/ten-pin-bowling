@@ -3,10 +3,10 @@ require File.expand_path('../frame', __dir__)
 describe Frame do
   describe '#initialize' do
     context 'when sum of score is above 10' do
-      subject { Frame.new(10, 1) }
+      subject { Frame.new(9, 9) }
 
       it 'should raise error' do
-        expect{ subject }.to raise_error('score out of range: 11')
+        expect{ subject }.to raise_error('score out of range: 18')
       end
     end
 
