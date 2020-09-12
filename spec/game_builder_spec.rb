@@ -30,7 +30,7 @@ describe GameBuilder do
     end
 
     context 'when there is a foul' do
-      let(:scores) { [10, 7, 3, 9, false, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1] }
+      let(:scores) { [10, 7, 3, 9, 'F', 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1] }
 
       subject { GameBuilder.new(scores).build }
 
