@@ -18,7 +18,3 @@ class GameParser
     end
   end
 end
-
-# parser = GameParser.new
-
-# p parser.input

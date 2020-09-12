@@ -34,7 +34,14 @@ class GamePlayerSerializer
   end
 
   def convert_value(value)
-    value == false ? 'F' : value
+    case value
+    when 10
+      'X'
+    when false
+      'F'
+    else
+      value
+    end
   end
 
   def print_scores
