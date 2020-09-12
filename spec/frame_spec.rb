@@ -18,6 +18,22 @@ describe Frame do
       end
     end
 
+    context 'when the first score is foul' do
+      subject { Frame.new(first_score: false, second_score: 2) }
+
+      it 'should raise error' do
+        expect(subject.partial_score).to eql(2)
+      end
+    end
+
+    context 'when the second score is foul' do
+      subject { Frame.new(first_score: 4, second_score: false) }
+
+      it 'should raise error' do
+        expect(subject.partial_score).to eql(4)
+      end
+    end
+
     context 'when sum of score is above 10' do
       subject { Frame.new(first_score: 9,second_score:9).validate! }
 

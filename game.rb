@@ -25,13 +25,17 @@ class Game
     return if frame.last_frame?
 
     if frame.strike?
-      if previous_frame.strike? && !previous_frame.last_frame?
-        previous_frame.first_score + second_previous_frame.first_score
-      else
-        previous_frame.first_score + previous_frame.second_score
-      end
+      strike_extra_points(previous_frame: previous_frame, second_previous_frame: second_previous_frame)
     elsif frame.spare?
-      previous_frame.first_score
+      (previous_frame.first_score || 0)
+    end
+  end
+
+  def strike_extra_points(previous_frame:, second_previous_frame:)
+    if previous_frame.strike? && !previous_frame.last_frame?
+      (previous_frame.first_score || 0) + (second_previous_frame.first_score || 0)
+    else
+      (previous_frame.first_score || 0) + (previous_frame.second_score || 0)
     end
   end
 end

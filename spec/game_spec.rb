@@ -95,13 +95,39 @@ describe Game do
 
     context 'with first, second and last frame with a strike,' do
       let(:frame1) { Frame.new(first_score: 10) }
-      let(:frame2) { Frame.new(first_score: 8,second_score: 2, third_score: 9) }
+      let(:frame2) { Frame.new(first_score: 8, second_score: 2, third_score: 9) }
       let(:frames) { [frame1, frame2] }
 
       subject { Game.new(frames).calculate_score }
 
       it 'calculate the score' do
         expect(subject).to eql(39)
+      end
+    end
+
+    context 'with first frame with one foul' do
+      let(:frame2) { Frame.new(first_score: 8, second_score: 2) }
+      let(:frame1) { Frame.new(first_score: false, second_score: 8) }
+
+      let(:frames) { [frame1, frame2] }
+
+      subject { Game.new(frames).calculate_score }
+
+      it 'calculate the score' do
+        expect(subject).to eql(18)
+      end
+    end
+
+    context 'with second frame with one foul' do
+      let(:frame2) { Frame.new(first_score: false, second_score: 2) }
+      let(:frame1) { Frame.new(first_score: 2, second_score: 8) }
+
+      let(:frames) { [frame1, frame2] }
+
+      subject { Game.new(frames).calculate_score }
+
+      it 'calculate the score' do
+        expect(subject).to eql(12)
       end
     end
   end

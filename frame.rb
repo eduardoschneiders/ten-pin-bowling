@@ -2,9 +2,9 @@ class Frame
   attr_accessor :first_score, :second_score, :third_score, :last_frame
 
   def initialize(first_score:, second_score: 0, third_score: 0, last_frame: false)
-    @first_score = first_score.to_i
-    @second_score = second_score.to_i
-    @third_score = third_score.to_i
+    @first_score = first_score
+    @second_score = second_score
+    @third_score = third_score
     @last_frame = last_frame
   end
 
@@ -25,7 +25,7 @@ class Frame
   end
 
   def partial_score
-    first_score + second_score + third_score
+    (first_score || 0) + (second_score || 0) + (third_score || 0)
   end
 
   private
