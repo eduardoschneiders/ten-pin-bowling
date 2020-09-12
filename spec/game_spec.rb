@@ -9,10 +9,15 @@ describe Game do
       let(:frame2) { Frame.new(first_score: 4, second_score: 0) }
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([5, 9])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(9)
+        expect(subject.calculate_score).to eql(9)
       end
     end
 
@@ -21,10 +26,15 @@ describe Game do
       let(:frame2) { Frame.new(first_score: 4, second_score: 5) }
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([14, 23])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(23)
+        expect(subject.calculate_score).to eql(23)
       end
     end
 
@@ -33,10 +43,15 @@ describe Game do
       let(:frame2) { Frame.new(first_score: 4, second_score: 5) }
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([19, 28])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(28)
+        expect(subject.calculate_score).to eql(28)
       end
     end
 
@@ -46,10 +61,15 @@ describe Game do
       let(:frame3) { Frame.new(first_score: 7,  second_score: 2) }
       let(:frames) { [frame1, frame2, frame3] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([27, 46, 55])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(55)
+        expect(subject.calculate_score).to eql(55)
       end
     end
 
@@ -60,10 +80,15 @@ describe Game do
       let(:frame4) { Frame.new(first_score: 1, second_score: 1) }
       let(:frames) { [frame1, frame2, frame3, frame4] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([27, 47, 58, 60])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(60)
+        expect(subject.calculate_score).to eql(60)
       end
     end
 
@@ -73,61 +98,86 @@ describe Game do
       let(:frame3) { Frame.new(first_score: 10, second_score: 10,third_score: 10, last_frame: true) }
       let(:frames) { [frame1, frame2, frame3] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([30, 60, 90])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(90)
+        expect(subject.calculate_score).to eql(90)
       end
     end
 
-    context 'with first, second and last frame with a strike,' do
+    context 'with first and second frame with a strike,' do
       let(:frame1) { Frame.new(first_score: 10) }
       let(:frame2) { Frame.new(first_score: 10) }
       let(:frame3) { Frame.new(first_score: 8,  second_score:2, third_score: 4) }
       let(:frames) { [frame1, frame2, frame3] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([28, 48, 62])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(62)
+        expect(subject.calculate_score).to eql(62)
       end
     end
 
-    context 'with first, second and last frame with a strike,' do
+    context 'with first frame with a strike,' do
       let(:frame1) { Frame.new(first_score: 10) }
       let(:frame2) { Frame.new(first_score: 8, second_score: 2, third_score: 9) }
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([20, 39])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(39)
+        expect(subject.calculate_score).to eql(39)
       end
     end
 
     context 'with first frame with one foul' do
-      let(:frame2) { Frame.new(first_score: 8, second_score: 2) }
       let(:frame1) { Frame.new(first_score: false, second_score: 8) }
+      let(:frame2) { Frame.new(first_score: 8, second_score: 2) }
 
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([8, 18])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(18)
+        expect(subject.calculate_score).to eql(18)
       end
     end
 
     context 'with second frame with one foul' do
-      let(:frame2) { Frame.new(first_score: false, second_score: 2) }
       let(:frame1) { Frame.new(first_score: 2, second_score: 8) }
+      let(:frame2) { Frame.new(first_score: false, second_score: 2) }
 
       let(:frames) { [frame1, frame2] }
 
-      subject { Game.new(frames).calculate_score }
+      subject { Game.new(frames) }
+
+      it 'create the scores' do
+        subject.calculate_score
+        expect(subject.frame_scores).to eql([10, 12])
+      end
 
       it 'calculate the score' do
-        expect(subject).to eql(12)
+        expect(subject.calculate_score).to eql(12)
       end
     end
   end
