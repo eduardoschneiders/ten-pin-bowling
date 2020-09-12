@@ -19,11 +19,13 @@ class Game
     end
   end
 
+  private
+
   def extra_points(frame:, previous_frame:, second_previous_frame:)
     return if frame.last_frame?
 
     if frame.strike?
-      if previous_frame.strike?
+      if previous_frame.strike? && !previous_frame.last_frame?
         previous_frame.first_score + second_previous_frame.first_score
       else
         previous_frame.first_score + previous_frame.second_score
