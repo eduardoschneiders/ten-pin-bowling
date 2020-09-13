@@ -20,7 +20,7 @@ on your native machine libraries or docker.
 ### Running the game
 `docker run -i ten-pin-bowling < some_input_file`
 
-Obs.: It was included tree game input examples, so you can run them as follows:
+Obs.: It was included three game input file examples, so you can run them as follows:
 
 `docker run -i ten-pin-bowling < game_input_example.txt`
 
@@ -43,3 +43,17 @@ Obs.: It was included tree game input examples, so you can run them as follows:
 
 ### Running the game
 `ruby game_runner.rb < some_input_file`
+
+---
+
+## Output example:
+
+```
+Frame           1               2               3               4               5               6               7               8               9               10
+Jeff
+Pinfalls                X       7       /       9       0               X       0       8       8       /       F       6               X               X       X       8       1
+Score           20              39              48              66              74              84              90              120             148             167
+John
+Pinfalls        3       /       6       3               X       8       1               X               X       9       0       7       /       4       4       X       9       0
+Score           16              25              44              53              82              101             110             124             132             151
+```
