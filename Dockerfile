@@ -5,4 +5,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
 
-CMD ruby frame.rb
+CMD ruby game_runner.rb
