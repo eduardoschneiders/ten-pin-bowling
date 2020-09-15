@@ -1,6 +1,4 @@
-require 'stringio'
-require 'byebug'
-require File.expand_path('../game_parser', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe GameParser do
   before do

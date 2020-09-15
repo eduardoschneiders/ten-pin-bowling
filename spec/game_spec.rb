@@ -1,6 +1,4 @@
-require 'byebug'
-require File.expand_path('../frame', __dir__)
-require File.expand_path('../game', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe Game do
   describe '#calculate_score' do
@@ -11,7 +9,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([5, 9])
       end
@@ -28,7 +26,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([14, 23])
       end
@@ -45,7 +43,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([19, 28])
       end
@@ -63,7 +61,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([27, 46, 55])
       end
@@ -82,7 +80,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([27, 47, 58, 60])
       end
@@ -100,7 +98,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([30, 60, 90])
       end
@@ -118,7 +116,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([28, 48, 62])
       end
@@ -135,7 +133,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([20, 39])
       end
@@ -153,7 +151,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([8, 18])
       end
@@ -171,7 +169,7 @@ describe Game do
 
       subject { Game.new(frames) }
 
-      it 'create the scores' do
+      it 'create the frame scores' do
         subject.calculate_score
         expect(subject.frame_scores).to eql([10, 12])
       end

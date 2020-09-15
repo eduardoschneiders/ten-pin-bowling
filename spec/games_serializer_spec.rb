@@ -1,9 +1,4 @@
-require 'byebug'
-require File.expand_path('../frame', __dir__)
-require File.expand_path('../game', __dir__)
-require File.expand_path('../game_builder', __dir__)
-require File.expand_path('../game_player_serializer', __dir__)
-require File.expand_path('../games_serializer', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe GamesSerializer do
   describe '#build' do
@@ -18,6 +13,7 @@ describe GamesSerializer do
       end
 
       subject { GamesSerializer.new(games: games).output }
+
       let(:out) do
         <<~OUT
         Frame\t\t1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10
@@ -27,7 +23,7 @@ describe GamesSerializer do
         OUT
       end
 
-      it 'prints the games score' do
+      it 'prints the game scores' do
         expect{ subject }.to output(out).to_stdout
       end
     end
@@ -47,6 +43,7 @@ describe GamesSerializer do
       end
 
       subject { GamesSerializer.new(games: games).output }
+
       let(:out) do
         <<~OUT
         Frame\t\t1\t\t2\t\t3\t\t4\t\t5\t\t6\t\t7\t\t8\t\t9\t\t10

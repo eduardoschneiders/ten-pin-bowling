@@ -1,8 +1,4 @@
-require 'byebug'
-require File.expand_path('../frame', __dir__)
-require File.expand_path('../game', __dir__)
-require File.expand_path('../game_builder', __dir__)
-require File.expand_path('../game_player_serializer', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe GamePlayerSerializer do
   describe '#build' do
@@ -11,6 +7,7 @@ describe GamePlayerSerializer do
       let(:game) { GameBuilder.new(scores).build }
 
       subject { GamePlayerSerializer.new(game: game, player_name: 'Eduardo').output }
+
       let(:out) do
         <<~OUT
         Eduardo

@@ -1,12 +1,9 @@
-require 'byebug'
-require File.expand_path('../frame', __dir__)
-require File.expand_path('../game', __dir__)
-require File.expand_path('../game_builder', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe GameBuilder do
   describe '#build' do
 
-    context '' do
+    context 'when there is not a foul' do
       let(:scores) { [10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 8, 1] }
 
       subject { GameBuilder.new(scores).build }

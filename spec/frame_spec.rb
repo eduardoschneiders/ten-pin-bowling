@@ -1,4 +1,4 @@
-require File.expand_path('../frame', __dir__)
+require File.expand_path('spec_helper', __dir__)
 
 describe Frame do
   describe '#initialize' do
@@ -13,7 +13,7 @@ describe Frame do
     context 'when the third score is needed' do
       subject { Frame.new(first_score: 1,second_score: 2, third_score: 3) }
 
-      it 'should raise error' do
+      it 'should calculate the partial score' do
         expect(subject.partial_score).to eql(6)
       end
     end
@@ -21,7 +21,7 @@ describe Frame do
     context 'when the first score is foul' do
       subject { Frame.new(first_score: false, second_score: 2) }
 
-      it 'should raise error' do
+      it 'should calculate the partial score' do
         expect(subject.partial_score).to eql(2)
       end
     end
@@ -29,7 +29,7 @@ describe Frame do
     context 'when the second score is foul' do
       subject { Frame.new(first_score: 4, second_score: false) }
 
-      it 'should raise error' do
+      it 'should calculate the partial score' do
         expect(subject.partial_score).to eql(4)
       end
     end
@@ -89,7 +89,7 @@ describe Frame do
     context 'when the sum of score is equal 10' do
       subject { Frame.new(first_score: 6,second_score: 4).spare? }
 
-      it 'should not be a spare' do
+      it 'should be a spare' do
         expect(subject).to eql(true)
       end
     end
