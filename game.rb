@@ -6,6 +6,10 @@ class Game
     @frame_scores = []
   end
 
+  def validate!
+    frames.each(&:validate!)
+  end
+
   def calculate_score # rubocop:disable  Metrics/AbcSize
     frames.each_with_index.inject(0) do |total, (frame, i)|
       total += extra_points(

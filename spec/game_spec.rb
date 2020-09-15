@@ -181,4 +181,30 @@ describe Game do
       end
     end
   end
+
+  describe '#validate!' do
+    context 'when sum of score is below 0' do
+      let(:frame1) { Frame.new(first_score: -1, second_score: 0) }
+      let(:frame2) { Frame.new(first_score: 4, second_score: 0) }
+      let(:frames) { [frame1, frame2] }
+
+      subject { Game.new(frames) }
+
+      it 'should raise error' do
+        expect { subject.validate! }.to raise_error('score out of range: -1')
+      end
+    end
+
+    context 'with two simple frames' do
+      let(:frame1) { Frame.new(first_score: 5, second_score: 0) }
+      let(:frame2) { Frame.new(first_score: 4, second_score: 0) }
+      let(:frames) { [frame1, frame2] }
+
+      subject { Game.new(frames) }
+
+      it 'should not raise error' do
+        expect{ subject.validate! }.not_to raise_error
+      end
+    end
+  end
 end

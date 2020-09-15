@@ -8,7 +8,9 @@ class GameBuilder
   def build
     frames = build_frames
 
-    Game.new(frames)
+    game = Game.new(frames)
+    game.validate!
+    game
   end
 
   private
