@@ -42,11 +42,11 @@ describe Frame do
       end
     end
 
-    context 'when sum of score is below 0' do
-      subject { Frame.new(first_score: -1, second_score:0).validate! }
+    context 'with a positive and a negative score' do
+      subject { Frame.new(first_score: -1, second_score: 1).validate! }
 
       it 'should raise error' do
-        expect { subject }.to raise_error('score out of range: -1')
+        expect { subject }.to raise_error('score out of range: 0')
       end
     end
   end

@@ -31,6 +31,14 @@ class Frame
   private
 
   def out_of_range?
-    partial_score.negative? || (partial_score > (last_frame? ? 30 : 10))
+    any_score_negative? || above_score?
+  end
+
+  def any_score_negative?
+    first_score.negative? || second_score.negative? || third_score.negative?
+  end
+
+  def above_score?
+    partial_score > (last_frame? ? 30 : 10)
   end
 end
