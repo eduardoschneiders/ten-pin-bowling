@@ -25,17 +25,25 @@ class Frame
   end
 
   def partial_score
-    (first_score || 0) + (second_score || 0) + (third_score || 0)
+    scores.sum
   end
 
   private
+
+  def scores
+    [
+      (first_score || 0),
+      (second_score || 0),
+      (third_score || 0)
+    ]
+  end
 
   def out_of_range?
     any_score_negative? || above_score?
   end
 
   def any_score_negative?
-    first_score.negative? || second_score.negative? || third_score.negative?
+    scores.any?(&:negative?)
   end
 
   def above_score?
